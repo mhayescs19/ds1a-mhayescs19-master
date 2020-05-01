@@ -10,12 +10,13 @@
         <attribute name="username" optional="YES" attributeType="String"/>
     </entity>
     <entity name="ProgrammingLang" representedClassName="ProgrammingLang" syncable="YES" codeGenerationType="class">
+        <attribute name="colorSelected" optional="YES" attributeType="String"/>
         <attribute name="dateCreated" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="Book" positionX="-54" positionY="9" width="128" height="88"/>
         <element name="Details" positionX="-54" positionY="-9" width="128" height="73"/>
-        <element name="ProgrammingLang" positionX="-54" positionY="27" width="128" height="73"/>
+        <element name="ProgrammingLang" positionX="-54" positionY="27" width="128" height="88"/>
     </elements>
 </model>

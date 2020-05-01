@@ -14,7 +14,7 @@ class ProgrammingLangController: UIViewController {
         private var managedObjectContext: NSManagedObjectContext!
         private var library = [ProgrammingLang()]
         
-        var langVC = (name: "", date: "")
+        var langVC = (name: "", date: "", colorSelected: "")
         
         @IBOutlet weak var tableView: UITableView!
         
@@ -48,8 +48,9 @@ class ProgrammingLangController: UIViewController {
         
         func createNewLanguageData(){
           let newLanguage = ProgrammingLang(entity: ProgrammingLang.entity(), insertInto: managedObjectContext) // creates a new space for another set of "details" (username & password) using context
-            newLanguage.name = langVC.name // sets title attribute from title variable from other view controller
-            newLanguage.dateCreated = langVC.date // sets author attribute from title variable from other
+            newLanguage.name = langVC.name // sets name attribute from _name variable from other view controller
+            newLanguage.dateCreated = langVC.date // sets language attribute from language variable from other
+            newLanguage.colorSelected = langVC.colorSelected // sets color to string for UIColor(named: "colorSelected")
             do{
                  try self.managedObjectContext.save() // try = handler for errors; saves the new detail set inside of the entity
              } catch{
@@ -114,6 +115,19 @@ class ProgrammingLangController: UIViewController {
              */
             cell.languageName.text = language.name
             cell.dateCreated.text = language.dateCreated
+            cell.backgroundColor = UIColor(named: language.colorSelected!) ?? UIColor.white
+            /*
+             For better readability, if the color
+             */
+            switch cell.backgroundColor {
+            case UIColor.white:
+                cell.languageName.textColor = UIColor.black
+                cell.dateCreated.textColor = UIColor.black
+                break
+            default:
+                cell.languageName.textColor = UIColor.white
+                cell.dateCreated.textColor = UIColor.white
+            }
             
             return cell
         }

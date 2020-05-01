@@ -16,7 +16,10 @@ class ProgAddLanguageController: UIViewController {
     
     var _name:String = String()
     var date:String = String()
+    
     var colorSelected:Bool = false
+    var colorType = (green: "appGreen", yellow: "appYellow", orange: "appOrange") // tupe enum
+    var currentColor:String = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,24 @@ class ProgAddLanguageController: UIViewController {
     @IBAction func cancelAddLanguage(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    // color selectors for cell color in table view
+    @IBAction func greenButton(_ sender: Any) {
+        colorSelected = true
+        currentColor = colorType.green // uses tuple as an enum to get string name for color selector
+        addLanguageButton.alpha = 1
+    }
+    
+    @IBAction func yellowButton(_ sender: Any) {
+        colorSelected = true
+        currentColor = colorType.yellow // uses tuple as an enum to get string name for color selector
+        addLanguageButton.alpha = 1
+    }
+    
+    @IBAction func orangeButton(_ sender: Any) {
+        colorSelected = true
+        currentColor = colorType.orange // uses tuple as an enum to get string name for color selector
+        addLanguageButton.alpha = 1
+    }
     
     @IBAction func addLanguageButton(_ sender: Any) {
         
@@ -38,6 +59,7 @@ class ProgAddLanguageController: UIViewController {
         let destVC = segue.destination as! ProgrammingLangController
         destVC.langVC.name = _name
         destVC.langVC.date = date
+        destVC.langVC.colorSelected = currentColor
     }
     
     /*
